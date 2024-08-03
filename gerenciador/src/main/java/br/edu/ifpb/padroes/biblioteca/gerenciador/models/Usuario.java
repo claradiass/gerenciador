@@ -1,20 +1,28 @@
 package br.edu.ifpb.padroes.biblioteca.gerenciador.models;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "usuario")
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String email;
-    private String senha; 
-    private Date dataNascimento;
-    private String endereco;
-    private String cargo; 
 
-    public Usuario(Long id, String nome, String email, String senha, Date dataNascimento, String endereco, String cargo) {
+    private String nome;
+    private String endereco;
+    private String cpf;
+    @Column(name = "data_nascimento")
+    private Date dataNascimento;
+    private String senha;
+    private UsuarioCargo cargo;
+
+    public Usuario(Long id, String nome, String cpf, String senha, Date dataNascimento, String endereco, UsuarioCargo cargo) {
         this.id = id;
         this.nome = nome;
-        this.email = email;
+        this.cpf = cpf;
         this.senha = senha;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
@@ -37,12 +45,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getSenha() {
@@ -69,11 +77,11 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-    public String getCargo() {
+    public UsuarioCargo getCargo() {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(UsuarioCargo cargo) {
         this.cargo = cargo;
     }
 }
