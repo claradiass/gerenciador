@@ -1,8 +1,8 @@
 package br.edu.ifpb.padroes.biblioteca.gerenciador.models;
 
 public enum UsuarioCargo {
-    ADMIN(0L),
-    NORMAL(1L);
+    ADMIN(1L),
+    COMUM(2L);
 
     private Long id;
 
