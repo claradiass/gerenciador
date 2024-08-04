@@ -1,13 +1,25 @@
 package br.edu.ifpb.padroes.biblioteca.gerenciador.models;
 
+import br.edu.ifpb.padroes.biblioteca.gerenciador.models.livros.Livro;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "emprestimo")
 public class Emprestimo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Usuario usuario;
+
     private Livro livro;
+    @Column(name = "data_emprestimo")
     private Date dataEmprestimo;
+    @Column(name = "data_entrega_prevista")
     private Date dataEntregaPrevista;
+    @Column(name = "data_devolucao")
     private Date dataDevolucao;
     private double multa;
     private boolean pago;
