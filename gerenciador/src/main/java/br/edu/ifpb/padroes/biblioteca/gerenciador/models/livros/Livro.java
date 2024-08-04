@@ -1,25 +1,34 @@
-package br.edu.ifpb.padroes.biblioteca.gerenciador.models;
+package br.edu.ifpb.padroes.biblioteca.gerenciador.models.livros;
+
+import br.edu.ifpb.padroes.biblioteca.gerenciador.models.Autor;
+import br.edu.ifpb.padroes.biblioteca.gerenciador.models.Genero;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 
+@Entity
+@Table(name = "livro")
 public class Livro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String titulo;
-    private Autor autor;
-    private Genero genero;
     private String isbn;
-    private String classificacaoIndicativa;
+    private String sinopse;
+    @Column(name = "ano_edicao")
     private Date dataPublicacao;
     private int quantidade;
-    private String sinopse;
+    private Set<Autor> autores;
+    private Set<Genero> generos;
 
-    public Livro(Long id, String titulo, Autor autor, Genero genero, String isbn, String classificacaoIndicativa, Date dataPublicacao, int quantidade, String sinopse) {
+    public Livro(Long id, String titulo, Set<Autor> autor, Set<Genero> genero, String isbn, Date dataPublicacao, int quantidade, String sinopse) {
         this.id = id;
         this.titulo = titulo;
-        this.autor = autor;
-        this.genero = genero;
+        this.autores = autor;
+        this.generos = genero;
         this.isbn = isbn;
-        this.classificacaoIndicativa = classificacaoIndicativa;
         this.dataPublicacao = dataPublicacao;
         this.quantidade = quantidade;
         this.sinopse = sinopse;
@@ -41,20 +50,12 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public Autor getAutor() {
-        return autor;
+    public Set<Autor> getAutor() {
+        return autores;
     }
 
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
-
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
+    public Set<Genero> getGenero() {
+        return generos;
     }
 
     public String getIsbn() {
@@ -63,14 +64,6 @@ public class Livro {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-    }
-
-    public String getClassificacaoIndicativa() {
-        return classificacaoIndicativa;
-    }
-
-    public void setClassificacaoIndicativa(String classificacaoIndicativa) {
-        this.classificacaoIndicativa = classificacaoIndicativa;
     }
 
     public Date getDataPublicacao() {
