@@ -19,6 +19,9 @@ public class Usuario {
     private String senha;
     private UsuarioCargo cargo;
 
+    public Usuario() {
+    }
+
     public Usuario(Long id, String nome, String cpf, String senha, Date dataNascimento, String endereco, UsuarioCargo cargo) {
         this.id = id;
         this.nome = nome;
