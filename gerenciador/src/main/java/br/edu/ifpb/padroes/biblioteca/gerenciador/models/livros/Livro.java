@@ -23,6 +23,9 @@ public class Livro {
     private Set<Autor> autores;
     private Set<Genero> generos;
 
+    public Livro() {
+    }
+
     public Livro(Long id, String titulo, Set<Autor> autor, Set<Genero> genero, String isbn, Date dataPublicacao, int quantidade, String sinopse) {
         this.id = id;
         this.titulo = titulo;
